@@ -1,0 +1,53 @@
+// website/views/index.pug
+// This is the homepage
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Economics Society
+    //link(rel="stylesheet", href="/css/output.css")
+    link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" type="text/css")
+    script(src="https://cdn.tailwindcss.com") 
+
+
+  body
+    include navbar
+    .hero(style="height: 400px; background-image: url('Stock Chart.svg'); background-color: rgba(255, 255, 255, 0.4);").bg-base-200.glass
+        .max-w(style="backdrop-filter: blur(2px); ")
+          div.container.mx-auto.my-8(style="height:max-content;padding:70px  100px; border-radius:%50;")
+            p.text-3xl.font-bold.text-blue-500(style="margin-bottom:10px; font-size:36px;") Welcome to Surrey Economics Society
+            p.py-6(style="font-size:24px;") Welcome to Surrey Economics Society! We're more than a club; we're a family. Whether you're a seasoned scholar or just starting in economics, you're welcomed with open arms. Join us for an enriching and friendly experience! 🌟
+            button.btn.btn-primary(style="margin-top:10px;") 
+             a(href="/join") Join Us
+            
+    .stats.shadow(style="margin-left:35%; margin-top:20px; margin-bottom:20px;")
+     .stat.place-items-center
+      .stat-title Our Society
+      .stat-value #{userCount}
+      .stat-desc people
+
+     .stat.place-items-center
+      .stat-title Projects Held
+      .stat-value.text-secondary #{projectCount}
+      .stat-desc.text-secondary ↗︎ Ever increasing
+
+     .stat.place-items-center
+      .stat-title Total funds
+      .stat-value £#{totalFunding}
+      .stat-desc ↘︎ 90 (14%)
+    .timeline 
+
+    .footer.footer-center.p-10.bg-primary.text-primary-content(style="height:200px;")
+      p.font-bold(style="font-size:36px; margin-top:20px;") Our sponsors
+      div(style="display:flex; gap:30px")
+       each sponsor in sponsors
+        p(style="margin-bottom:30px;font-size:18px;") #{sponsor.Sponsor_name}
+
+    footer.footer.footer-center.p-4.bg-base-300.text-base-content(style ="height:140px; margin-top:20px;")
+     aside
+      p Copyright © 2023 - All right reserved by Enes Aydin
+
+  
+
+

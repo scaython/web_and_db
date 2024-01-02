@@ -1,0 +1,69 @@
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" type="text/css")
+        script(src="https://cdn.tailwindcss.com") 
+        title Edit Blog
+        style. 
+          input,
+          textarea {
+          background-color: rgba(250,250,250,0.9);
+          
+          font-size: 18px;
+          padding: 10px 10px 10px 5px;
+          display: block;
+          
+          border: none;
+          border-radius: 0;
+          border-bottom: 2px solid
+          }
+
+          input:focus,textarea:focus {
+              outline: none;
+          }
+          textarea{
+            width:300px;
+            height:420px;
+          }
+          
+          
+
+
+
+
+
+    body
+        include navbar
+        - // Check if the "success" variable is true
+         if (success)
+            // Show success alert
+            .alert.alert-success(role="alert", id="successAlert")
+                svg(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24")
+                    path(d="M9 12l2 2 4-4")
+                span Your update was successful!
+         else if (error)
+            // Show error alert
+            .alert.alert-error(role="alert", id="errorAlert")
+                svg(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24")
+                    path(d="M6 18L18 6M6 6l12 12")
+                p= error
+        script.
+                // function to hide the success alert after 5 seconds
+                setTimeout(function() {
+                    var successAlert = document.getElementById('successAlert');
+                    successAlert.style.display = 'none';
+                    
+                }, 5000);
+        .glass
+         .card-body
+          form(action="/blogs/edit/" + blog.BlogID, method="post",style="display:flex; flex-direction:column; justify-content:center;align-items:center; gap:10px; margin-top:20px;")
+            input(type="hidden", name="BlogID", value=blog.BlogID, style="border:")
+            label(for="title",style="font-weight:bold;") Title:
+            input(type="text", id="title", name="Title", value=blog.Title, required,style="border")
+            label(for="article",style="font-weight:bold;") Article:
+            textarea(id="article", name="Article", required)= blog.Article
+            button.btn(style="border:none;")
+             input(type="submit", value="Update Blog",style="border:none;")

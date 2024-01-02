@@ -1,0 +1,24 @@
+// This shows all the blogs
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" type="text/css")
+        script(src="https://cdn.tailwindcss.com") 
+        title Projects
+    body 
+        include navbar
+       
+        .join
+        each blog in blogs
+         .card.w-100.bg-base-200.shadow-xl(style="border-radius:16px; margin:20px 10px;") 
+            .card-body 
+                .card-title= blog.Title
+                p= blog.Article 
+                .card-actions.justify-end 
+                    .btn.btn-primary 
+                        a(href="/blogs/"+blog.BlogID) View
+                    .btn.btn-secondary 
+                        a(href="/blogs/edit/"+blog.BlogID) Edit
+                    

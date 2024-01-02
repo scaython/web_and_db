@@ -1,0 +1,23 @@
+// individual blog page
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" type="text/css")
+        script(src="https://cdn.tailwindcss.com") 
+        title View Blog
+    body 
+        include navbar
+        .breadcrumbs( style="margin-left:20px; margin-top:20px;")
+            ul 
+                li 
+                 a(href='/') Home
+                li 
+                 a(href='/blogs') Blogs
+                li 
+                 p=blog.Title
+        .card.w-100.bg-base-200.shadow-xl(style="border-radius:16px; margin:20px 10px;") 
+            .card-body 
+                .card-title= blog.Title
+                p= blog.Article
